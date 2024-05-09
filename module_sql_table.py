@@ -14,11 +14,11 @@ dic['tl_scco_ctprvn_new'] = f'''CREATE TABLE gfdata.tl_scco_ctprvn_new (
 	ctp_eng_nm varchar(40) NULL,
 	ctp_kor_nm varchar(40) NULL,
 	geom public.geometry(multipolygon, 5179) NULL,
-	CONSTRAINT tl_scco_ctprvn_new_pkey{time_1[-2:]} PRIMARY KEY (gid)
+	CONSTRAINT tl_scco_ctprvn_new_pkey{str(date_1)[-2:]+time_1[-2:]} PRIMARY KEY (gid)
 )
 TABLESPACE gf
 ;
-CREATE INDEX tl_scco_ctprvn_new_geom_idx_{time_1[-2:]} ON gfdata.tl_scco_ctprvn_new USING gist (geom);'''
+CREATE INDEX tl_scco_ctprvn_new_geom_idx_{str(date_1)[-2:]+time_1[-2:]} ON gfdata.tl_scco_ctprvn_new USING gist (geom);'''
 
 dic['tl_scco_emd_new'] = f'''CREATE TABLE gfdata.tl_scco_emd_new (
 	gid int4 DEFAULT nextval('gfdata.tl_scco_emd_new'::regclass) NOT NULL,
@@ -26,11 +26,11 @@ dic['tl_scco_emd_new'] = f'''CREATE TABLE gfdata.tl_scco_emd_new (
 	emd_eng_nm varchar(40) NULL,
 	emd_kor_nm varchar(40) NULL,
 	geom public.geometry(multipolygon, 5179) NULL,
-	CONSTRAINT tl_scco_emd_new_pkey{time_1[-2:]} PRIMARY KEY (gid)
+	CONSTRAINT tl_scco_emd_new_pkey{str(date_1)[-2:]+time_1[-2:]} PRIMARY KEY (gid)
 )
 TABLESPACE gf
 ;
-CREATE INDEX tl_scco_emd_new_geom_idx_{time_1[-2:]} ON gfdata.tl_scco_emd_new USING gist (geom);'''
+CREATE INDEX tl_scco_emd_new_geom_idx_{str(date_1)[-2:]+time_1[-2:]} ON gfdata.tl_scco_emd_new USING gist (geom);'''
 
 dic['tl_scco_li_new'] =f'''CREATE TABLE gfdata.tl_scco_li_new (
 	gid int4 DEFAULT nextval('gfdata.tl_scco_li_new'::regclass) NOT NULL,
@@ -38,11 +38,11 @@ dic['tl_scco_li_new'] =f'''CREATE TABLE gfdata.tl_scco_li_new (
 	li_eng_nm varchar(40) NULL,
 	li_kor_nm varchar(40) NULL,
 	geom public.geometry(multipolygon, 5179) NULL,
-	CONSTRAINT tl_scco_li_new_pkey{time_1[-2:]} PRIMARY KEY (gid)
+	CONSTRAINT tl_scco_li_new_pkey{str(date_1)[-2:]+time_1[-2:]} PRIMARY KEY (gid)
 )
 TABLESPACE gf
 ;
-CREATE INDEX tl_scco_li_new_geom_idx_{time_1[-2:]} ON gfdata.tl_scco_li_new USING gist (geom);'''
+CREATE INDEX tl_scco_li_new_geom_idx_{str(date_1)[-2:]+time_1[-2:]} ON gfdata.tl_scco_li_new USING gist (geom);'''
 
 dic['tl_scco_sig_new'] = f'''CREATE TABLE gfdata.tl_scco_sig_new (
 	gid int4 DEFAULT nextval('gfdata.tl_scco_sig_new'::regclass) NOT NULL,
@@ -50,11 +50,11 @@ dic['tl_scco_sig_new'] = f'''CREATE TABLE gfdata.tl_scco_sig_new (
 	sig_eng_nm varchar(40) NULL,
 	sig_kor_nm varchar(40) NULL,
 	geom public.geometry(multipolygon, 5179) NULL,
-	CONSTRAINT tl_scco_sig_new_pkey{time_1[-2:]} PRIMARY KEY (gid)
+	CONSTRAINT tl_scco_sig_new_pkey{str(date_1)[-2:]+time_1[-2:]} PRIMARY KEY (gid)
 )
 TABLESPACE gf
 ;
-CREATE INDEX tl_scco_sig_new_geom_idx_{time_1[-2:]} ON gfdata.tl_scco_sig_new USING gist (geom);'''
+CREATE INDEX tl_scco_sig_new_geom_idx_{str(date_1)[-2:]+time_1[-2:]} ON gfdata.tl_scco_sig_new USING gist (geom);'''
 
 
 #layer_group_1_sgis
@@ -62,41 +62,41 @@ CREATE INDEX tl_scco_sig_new_geom_idx_{time_1[-2:]} ON gfdata.tl_scco_sig_new US
 # ------------------------------------------------------------------------------------------------
 dic['z_sop_bnd_sido_pg_new'] = f'''
 CREATE TABLE gfdata.z_sop_bnd_sido_pg_new (
-	gid int4 DEFAULT nextval('gfdata.z_sop_bnd_sido_pg_new_{time_1[-2:]}_gid_seq'::regclass) NOT NULL,
+	gid int4 DEFAULT nextval('gfdata.z_sop_bnd_sido_pg_new_{str(date_1)[-2:]+time_1[-2:]}_gid_seq'::regclass) NOT NULL,
 	base_date varchar(8) NULL,
 	sido_cd varchar(2) NULL,
 	sido_nm varchar(50) NULL,
 	admint_cd varchar(254) NULL,
 	geom public.geometry(multipolygon, 5174) NULL,
-	CONSTRAINT z_sop_bnd_sido_pg_new_{time_1[-2:]}_pkey PRIMARY KEY (gid)
+	CONSTRAINT z_sop_bnd_sido_pg_new_{str(date_1)[-2:]+time_1[-2:]}_pkey PRIMARY KEY (gid)
 );
-CREATE INDEX z_sop_bnd_sido_pg_new_{time_1[-2:]}_geom_idx ON gfdata.z_sop_bnd_sido_pg_new USING gist (geom);
+CREATE INDEX z_sop_bnd_sido_pg_new_{str(date_1)[-2:]+time_1[-2:]}_geom_idx ON gfdata.z_sop_bnd_sido_pg_new USING gist (geom);
 '''
 
 dic['z_sop_bnd_adm_dong_pg_new'] = f''' 
 CREATE TABLE gfdata.z_sop_bnd_adm_dong_pg_new (
-	gid int4 DEFAULT nextval('gfdata.z_sop_bnd_adm_dong_pg_new_{time_1[-2:]}_gid_seq'::regclass) NOT NULL,
+	gid int4 DEFAULT nextval('gfdata.z_sop_bnd_adm_dong_pg_new_{str(date_1)[-2:]+time_1[-2:]}_gid_seq'::regclass) NOT NULL,
 	base_date varchar(8) NULL,
 	adm_nm varchar(50) NULL,
 	adm_cd varchar(8) NULL,
 	admint_cd varchar(254) NULL,
 	geom public.geometry(multipolygon, 5174) NULL,
-	CONSTRAINT z_sop_bnd_adm_dong_pg_new_{time_1[-2:]}_pkey PRIMARY KEY (gid)
+	CONSTRAINT z_sop_bnd_adm_dong_pg_new_{str(date_1)[-2:]+time_1[-2:]}_pkey PRIMARY KEY (gid)
 );
-CREATE INDEX z_sop_bnd_adm_dong_pg_new_{time_1[-2:]}_geom_idx ON gfdata.z_sop_bnd_adm_dong_pg_new USING gist (geom);
+CREATE INDEX z_sop_bnd_adm_dong_pg_new_{str(date_1)[-2:]+time_1[-2:]}_geom_idx ON gfdata.z_sop_bnd_adm_dong_pg_new USING gist (geom);
 '''
 
 dic['z_sop_bnd_sigungu_new'] = f'''
 CREATE TABLE gfdata.z_sop_bnd_sido_pg_new (
-	gid int4 DEFAULT nextval('gfdata.z_sop_bnd_sido_pg_new_{time_1[-2:]}_gid_seq'::regclass) NOT NULL,
+	gid int4 DEFAULT nextval('gfdata.z_sop_bnd_sido_pg_new_{str(date_1)[-2:]+time_1[-2:]}_gid_seq'::regclass) NOT NULL,
 	base_date varchar(8) NULL,
 	sido_cd varchar(2) NULL,
 	sido_nm varchar(50) NULL,
 	admint_cd varchar(254) NULL,
 	geom public.geometry(multipolygon, 5174) NULL,
-	CONSTRAINT z_sop_bnd_sido_pg_new_{time_1[-2:]}_pkey PRIMARY KEY (gid)
+	CONSTRAINT z_sop_bnd_sido_pg_new_{str(date_1)[-2:]+time_1[-2:]}_pkey PRIMARY KEY (gid)
 );
-CREATE INDEX z_sop_bnd_sido_pg_new_{time_1[-2:]}_geom_idx ON gfdata.z_sop_bnd_sido_pg_new USING gist (geom); 
+CREATE INDEX z_sop_bnd_sido_pg_new_{str(date_1)[-2:]+time_1[-2:]}_geom_idx ON gfdata.z_sop_bnd_sido_pg_new USING gist (geom); 
 '''
 
 dic['lsmd_cont_ldreg_new'] = f'''CREATE TABLE gfdata.lsmd_cont_ldreg_new (
@@ -119,9 +119,9 @@ dic['tl_spsb_entrc_new'] = f'''CREATE TABLE gfdata.tl_spsb_entrc_new (
 	entrc_no int4 NULL,
 	opert_de varchar(14) NULL,
 	geom public.geometry(point, 5186) NULL,
-	CONSTRAINT tl_spsb_entrc_new_pkey{time_1[-2:]} PRIMARY KEY (gid)
+	CONSTRAINT tl_spsb_entrc_new_pkey{str(date_1)[-2:]+time_1[-2:]} PRIMARY KEY (gid)
 );
-CREATE INDEX tl_spsb_entrc_new_geom_idx_{time_1[-2:]} ON gfdata.tl_spsb_entrc_new USING gist (geom);'''
+CREATE INDEX tl_spsb_entrc_new_geom_idx_{str(date_1)[-2:]+time_1[-2:]} ON gfdata.tl_spsb_entrc_new USING gist (geom);'''
 
 # 'tl_sprl_statn_new'------------------------------------------------
 dic['tl_sprl_statn_new'] = f'''CREATE TABLE gfdata.tl_sprl_statn_new (
@@ -131,9 +131,9 @@ dic['tl_sprl_statn_new'] = f'''CREATE TABLE gfdata.tl_sprl_statn_new (
     kor_sta_nm varchar(40) NULL,
     opert_de varchar(14) NULL,
     geom public.geometry(multipolygon, 5186) NULL,
-    CONSTRAINT tl_sprl_statn_new_pkey{time_1[-2:]} PRIMARY KEY (gid)
+    CONSTRAINT tl_sprl_statn_new_pkey{str(date_1)[-2:]+time_1[-2:]} PRIMARY KEY (gid)
 );
-CREATE INDEX tl_sprl_statn_new_geom_idx_{time_1[-2:]} ON gfdata.tl_sprl_statn_new USING gist (geom);'''
+CREATE INDEX tl_sprl_statn_new_geom_idx_{str(date_1)[-2:]+time_1[-2:]} ON gfdata.tl_sprl_statn_new USING gist (geom);'''
 
 # 'tl_sprl_rlway_new'------------------------------------------------
 dic['tl_sprl_rlway_new'] = f'''CREATE TABLE gfdata.tl_sprl_rlway_new (
@@ -143,9 +143,9 @@ dic['tl_sprl_rlway_new'] = f'''CREATE TABLE gfdata.tl_sprl_rlway_new (
 	kor_rlr_nm varchar(40) NULL,
 	opert_de varchar(14) NULL,
 	geom public.geometry(multilinestring, 5186) NULL,
-	CONSTRAINT tl_sprl_rlway_new_pkey{time_1[-2:]} PRIMARY KEY (gid)
+	CONSTRAINT tl_sprl_rlway_new_pkey{str(date_1)[-2:]+time_1[-2:]} PRIMARY KEY (gid)
 );
-CREATE INDEX tl_sprl_rlway_new_geom_idx_{time_1[-2:]} ON gfdata.tl_sprl_rlway_new USING gist (geom);
+CREATE INDEX tl_sprl_rlway_new_geom_idx_{str(date_1)[-2:]+time_1[-2:]} ON gfdata.tl_sprl_rlway_new USING gist (geom);
 '''
 # 'tl_spsb_statn_new'------------------------------------------------
 # 얘는 운영 DB에도 5179로 되어있음. but 맵픽에서 잘 나옴...?
@@ -156,9 +156,9 @@ dic['tl_spsb_statn_new'] = f'''CREATE TABLE gfdata.tl_spsb_statn_new (
 	kor_sub_nm varchar(40) NULL,
 	opert_de varchar(14) NULL,
 	geom public.geometry(multipolygon, 5179) NULL,
-	CONSTRAINT tl_spsb_statn_new_pkey{time_1[-2:]} PRIMARY KEY (gid)
+	CONSTRAINT tl_spsb_statn_new_pkey{str(date_1)[-2:]+time_1[-2:]} PRIMARY KEY (gid)
 );
-CREATE INDEX tl_spsb_statn_new_geom_idx_{time_1[-2:]} ON gfdata.tl_spsb_statn_new USING gist (geom); 
+CREATE INDEX tl_spsb_statn_new_geom_idx_{str(date_1)[-2:]+time_1[-2:]} ON gfdata.tl_spsb_statn_new USING gist (geom); 
 '''
 # 'tl_spsb_rlway_new'------------------------------------------------
 # 얘는 운영 DB에도 5179로 되어있음. but 맵픽에서 잘 나옴...?
@@ -169,9 +169,9 @@ dic['tl_spsb_rlway_new'] = f'''CREATE TABLE gfdata.tl_spsb_rlway_new (
 	kor_sbr_nm varchar(40) NULL,
 	opert_de varchar(14) NULL,
 	geom public.geometry(multilinestring, 5186) NULL,
-	CONSTRAINT tl_spsb_rlway_new_2024_pkey{time_1[-2:]} PRIMARY KEY (gid)
+	CONSTRAINT tl_spsb_rlway_new_2024_pkey{str(date_1)[-2:]+time_1[-2:]} PRIMARY KEY (gid)
 );
-CREATE INDEX tl_spsb_rlway_new_geom_idx_{time_1[-2:]} ON gfdata.tl_spsb_rlway_new USING gist (geom);
+CREATE INDEX tl_spsb_rlway_new_geom_idx_{str(date_1)[-2:]+time_1[-2:]} ON gfdata.tl_spsb_rlway_new USING gist (geom);
 '''
 
 #layer_group_3 도로교통 - 도로
@@ -189,9 +189,9 @@ dic['tl_sprd_intrvl_new'] = f'''CREATE TABLE gfdata.tl_sprd_intrvl_new (
 	rds_man_no float8 NULL,
 	sig_cd varchar(5) NULL,
 	geom public.geometry(multilinestring, 5186) NULL,
-	CONSTRAINT tl_sprd_intrvl_new_pkey{time_1[-2:]} PRIMARY KEY (gid)
+	CONSTRAINT tl_sprd_intrvl_new_pkey{str(date_1)[-2:]+time_1[-2:]} PRIMARY KEY (gid)
 );
-CREATE INDEX tl_sprd_intrvl_new_geom_idx_{time_1[-2:]} ON gfdata.tl_sprd_intrvl_new USING gist (geom);
+CREATE INDEX tl_sprd_intrvl_new_geom_idx_{str(date_1)[-2:]+time_1[-2:]} ON gfdata.tl_sprd_intrvl_new USING gist (geom);
 '''
 
 # 'tl_sprd_intrvl'------------------------------------------------
@@ -218,9 +218,9 @@ dic['tl_sprd_manage_new'] = f'''CREATE TABLE gfdata.tl_sprd_manage_new (
 	sig_cd varchar(5) NULL,
 	wdr_rd_cd varchar(10) NULL,
 	geom public.geometry(multilinestring, 5186) NULL,
-	CONSTRAINT tl_sprd_manage_new_pkey{time_1[-2:]} PRIMARY KEY (gid)
+	CONSTRAINT tl_sprd_manage_new_pkey{str(date_1)[-2:]+time_1[-2:]} PRIMARY KEY (gid)
 );
-CREATE INDEX tl_sprd_manage_new_geom_idx_{time_1[-2:]} ON gfdata.tl_sprd_manage_new USING gist (geom);
+CREATE INDEX tl_sprd_manage_new_geom_idx_{str(date_1)[-2:]+time_1[-2:]} ON gfdata.tl_sprd_manage_new USING gist (geom);
 '''
 
 # 'tl_sprd_rw'------------------------------------------------
@@ -230,9 +230,9 @@ dic['tl_sprd_rw_new'] = f'''CREATE TABLE gfdata.tl_sprd_rw_new (
 	rw_sn float8 NULL,
 	sig_cd varchar(5) NULL,
 	geom public.geometry(multipolygon, 5186) NULL,
-	CONSTRAINT tl_sprd_rw_new_pkey{time_1[-2:]} PRIMARY KEY (gid)
+	CONSTRAINT tl_sprd_rw_new_pkey{str(date_1)[-2:]+time_1[-2:]} PRIMARY KEY (gid)
 );
-CREATE INDEX tl_sprd_rw_new_geom_idx_{time_1[-2:]} ON gfdata.tl_sprd_rw_new USING gist (geom);
+CREATE INDEX tl_sprd_rw_new_geom_idx_{str(date_1)[-2:]+time_1[-2:]} ON gfdata.tl_sprd_rw_new USING gist (geom);
 '''
 
 #layer_group_4_건물통합정보
@@ -269,11 +269,11 @@ CREATE TABLE gfdata.al_d010_new (
 	a27 int4 NULL,
 	a28 varchar(10) NULL,
 	geom public.geometry(multipolygon, 5186) NULL,
-	CONSTRAINT al_d010_new_pkey_{time_1[-2:]} PRIMARY KEY (gid)
+	CONSTRAINT al_d010_new_pkey_{str(date_1)[-2:]+time_1[-2:]} PRIMARY KEY (gid)
 )
 TABLESPACE gf
 ;
-CREATE INDEX al_d010_geom_idx_{time_1[-2:]} ON gfdata.al_d010_new USING gist (geom);
-CREATE INDEX al_d010_geom_idx1_{time_1[-2:]} ON gfdata.al_d010_new USING gist (geom);'''
+CREATE INDEX al_d010_geom_idx_{str(date_1)[-2:]+time_1[-2:]} ON gfdata.al_d010_new USING gist (geom);
+CREATE INDEX al_d010_geom_idx1_{str(date_1)[-2:]+time_1[-2:]} ON gfdata.al_d010_new USING gist (geom);'''
 
 
