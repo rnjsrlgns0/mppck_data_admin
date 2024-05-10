@@ -235,6 +235,28 @@ dic['tl_sprd_rw_new'] = f'''CREATE TABLE gfdata.tl_sprd_rw_new (
 CREATE INDEX tl_sprd_rw_new_geom_idx_{str(date_1)[-2:]+time_1[-2:]} ON gfdata.tl_sprd_rw_new USING gist (geom);
 '''
 
+# 'tl_sgco_rnadr_mst_new'------------------------------------------------
+dic['tl_sgco_rnadr_mst_new']=f'''
+CREATE TABLE gfdata.tl_sgco_rnadr_mst_new (
+	gid int4 DEFAULT nextval('gfdata.tl_sgco_rnadr_mst_new'::regclass) NOT NULL,
+	adr_mng_no varchar(26) NULL,
+	sig_cd varchar(5) NULL,
+	rn_cd varchar(7) NULL,
+	buld_se_cd varchar(1) NULL,
+	buld_mnnm int4 NULL,
+	buld_slno int4 NULL,
+	bul_man_no int4 NULL,
+	eqb_man_sn float8 NULL,
+	effect_de varchar(8) NULL,
+	geom public.geometry(multipolygon, 5186) NULL,
+	CONSTRAINT tl_sgco_rnadr_mst_new_pkey{str(date_1)[-2:]+time_1[-2:]} PRIMARY KEY (gid)
+)
+TABLESPACE gf
+;
+CREATE INDEX tl_sgco_rnadr_mst_new_geom_idx_{str(date_1)[-2:]+time_1[-2:]} ON gfdata.tl_sgco_rnadr_mst_new USING gist (geom); 
+'''
+
+
 #layer_group_4_건물통합정보
 dic['al_d010_new'] = f'''
 CREATE TABLE gfdata.al_d010_new (
