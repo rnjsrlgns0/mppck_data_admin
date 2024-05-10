@@ -256,6 +256,42 @@ TABLESPACE gf
 CREATE INDEX tl_sgco_rnadr_mst_new_geom_idx_{str(date_1)[-2:]+time_1[-2:]} ON gfdata.tl_sgco_rnadr_mst_new USING gist (geom); 
 '''
 
+# 'tl_spot_cntc_new'------------------------------------------------
+dic['tl_spot_cntc_new']=f''' CREATE TABLE gfdata.tl_spot_cntc_new (
+	gid int4 DEFAULT nextval('gfdata.tl_spot_cntc_new'::regclass) NOT NULL,
+	bsi_int_sn float8 NULL,
+	cnt_drc_ln varchar(1) NULL,
+	cnt_dst_ln varchar(10) NULL,
+	ent_man_no float8 NULL,
+	opert_de varchar(14) NULL,
+	rds_man_no float8 NULL,
+	rds_sig_cd varchar(5) NULL,
+	sig_cd varchar(5) NULL,
+	geom public.geometry(multilinestring, 5186) NULL,
+	CONSTRAINT tl_spot_cntc_new_pkey_{str(date_1)[-2:]+time_1[-2:]} PRIMARY KEY (gid)
+)
+TABLESPACE gf
+;
+CREATE INDEX tl_spot_cntc_new_geom_idx_{str(date_1)[-2:]+time_1[-2:]} ON gfdata.tl_spot_cntc_new USING gist (geom);
+'''
+
+# 'tl_spbd_entrc_new'---------------------------------------------
+dic['tl_spbd_entrc_new'] = f''' CREATE TABLE gfdata.tl_spbd_entrc_new (
+	gid int4 DEFAULT nextval('gfdata.tl_spbd_entrc_new'::regclass) NOT NULL,
+	bul_man_no int4 NULL,
+	entrc_se varchar(2) NULL,
+	ent_man_no float8 NULL,
+	eqb_man_sn float8 NULL,
+	opert_de varchar(14) NULL,
+	sig_cd varchar(5) NULL,
+	geom public.geometry(point, 5186) NULL,
+	CONSTRAINT tl_spbd_entrc_new_pkey__{str(date_1)[-2:]+time_1[-2:]} PRIMARY KEY (gid)
+)
+TABLESPACE gf
+;
+CREATE INDEX tl_spbd_entrc_new_geom_idx__{str(date_1)[-2:]+time_1[-2:]} ON gfdata.tl_spbd_entrc_new USING gist (geom);
+'''
+
 
 #layer_group_4_건물통합정보
 dic['al_d010_new'] = f'''
