@@ -203,26 +203,26 @@ def path_finder_group4_road():
 
 #group4 GIS 건통
 def path_finder_group4_con():
-#다운받은 zip파일 해제
-	zip_names = os.listdir('../layer_group_4_con')
-	os.mkdir('../layer_group_4_con/전국')
-	for i in zip_names:
-		if i != '.DS_Store':
-			zip_file_path = f'../layer_group_4_con/{i}'
-			extracted_folder_path = f'../layer_group_4_con/전국'
-			with zipfile.ZipFile(zip_file_path, 'r') as zip_ref:
-				zip_ref.extractall(extracted_folder_path)
-			contents = os.listdir(extracted_folder_path)
-	li_file = os.listdir('../layer_group_4_con/전국')
-	li = []
-	for i in li_file:
-		li.append(i.split('.')[0])
-	li = list(set(li))
-	for i in li:
-		os.mkdir(f'../layer_group_4_con/{i}')
-	for i in li_file:
-		path_before = f'../layer_group_4_con/전국/{i}'
-		f = i.split('.')[0]
-		path_after = f'../layer_group_4_con/{f}'
-		shutil.move(path_before, path_after)
-	shutil.rmtree('../layer_group_4_con/전국')
+    # 다운받은 zip파일 해제 및 파일 이동
+    zip_names = [f for f in os.listdir('../layer_group_4_con') if f != '.DS_Store']
+    os.mkdir('../layer_group_4_con/전국')
+    for zip_name in zip_names:
+        zip_file_path = f'../layer_group_4_con/{zip_name}'
+        with zipfile.ZipFile(zip_file_path, 'r') as zip_ref:
+            zip_ref.extractall('../layer_group_4_con/전국')
+
+    # 파일명 수정 및 디렉토리 생성
+    li_file = os.listdir('../layer_group_4_con/전국')
+    unique_files = set(f.split('.')[0] for f in li_file)
+    for file_name in unique_files:
+        modified_name = file_name.replace('_52_', '_45_').replace('_51_', '_42_')
+        os.mkdir(f'../layer_group_4_con/{modified_name}')
+
+    # 파일 이동
+    for file in li_file:
+        path_before = f'../layer_group_4_con/전국/{file}'
+        modified_name = file.split('.')[0].replace('_52_', '_45_').replace('_51_', '_42_')
+        path_after = f'../layer_group_4_con/{modified_name}'
+        shutil.move(path_before, path_after)
+
+    shutil.rmtree('../layer_group_4_con/전국')
