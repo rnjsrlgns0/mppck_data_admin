@@ -82,9 +82,6 @@ def path_finder_group3_sttn():
 
 	# 2. 같은종류의 파일끼리 한 곳에 몰아놓기
 	file_names = os.listdir(f'{rltv_pth}전국')
-	# print(len(file_names))
-	# s = pd.Series(data = file_names)
-	# s.str.split('.').str[3].unique()
 	for i in file_names:
 		if (i != '.DS_Store')&(i.split('.')[3] in li_table):
 			p = i.split('.')[3]
@@ -92,7 +89,6 @@ def path_finder_group3_sttn():
 			path_after = f'{rltv_pth}{p}/{i}'
 			shutil.move(path_before,path_after)
 	shutil.rmtree('../layer_group_3_sttn/전국')
-	#--------------------------------여기까지 정상
 
 	# 3.몰려있는 파일들을 다시 지역 별 폴더로 나누기
 	for i in li_table:
